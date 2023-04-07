@@ -17,6 +17,10 @@ function MovieList() {
     fetchMovie();
   }, []);
 
+  const editedMovies = ListOMovies.filter(
+    (movie) => movie.edited === 'Yes',
+  ).sort((a, b) => a.title.localeCompare(b.title));
+
   return (
     <>
       <div>
@@ -37,7 +41,7 @@ function MovieList() {
             </tr>
           </thead>
           <tbody>
-            {ListOMovies.map((m) => (
+            {editedMovies.map((m) => (
               <tr key={m.movieId}>
                 <td>{m.category}</td>
                 <td>{m.title}</td>
